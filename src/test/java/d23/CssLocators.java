@@ -29,6 +29,13 @@ public class CssLocators {
     //    attribute
     driver.findElement(By.cssSelector("[name='password']")).sendKeys("admin123");
 
+    // multiple classNames
+    String forgotPassword =
+        driver
+            .findElement(By.cssSelector(".oxd-text.oxd-text--p.orangehrm-login-forgot-header"))
+            .getText();
+    System.out.println(forgotPassword);
+
     // Can use only part of the className from the whole className as '.orangehrm-login-button'
     // From -> 'class="oxd-button oxd-button--medium oxd-button--main orangehrm-login-button"
     driver.findElement(By.cssSelector(".orangehrm-login-button")).click();
