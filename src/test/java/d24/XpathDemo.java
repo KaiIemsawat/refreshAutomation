@@ -11,6 +11,13 @@ public class XpathDemo {
     driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     driver.manage().window().maximize();
 
+    // chained
+    boolean isLogoDisplayed =
+        driver
+            .findElement(By.xpath("//div[@class='orangehrm-login-slot-wrapper']//img"))
+            .isDisplayed();
+    System.out.println("Is logo displayed : " + isLogoDisplayed);
+
     driver.findElement(By.xpath("//input[@name='username']")).sendKeys("Admin");
 
     // start-with
@@ -38,6 +45,8 @@ public class XpathDemo {
     // contains attribute
     // multiple contains
     // '.' can be used as wild card for contains
+    // using 'and' operator instead of multiple '[]'
+    // 'or' operator can be used as well
     String multipleContain =
         driver
             .findElement(By.xpath("//p[contains(@class,'oxd-text') and contains(.,'Ad')]"))
@@ -46,17 +55,6 @@ public class XpathDemo {
 
     // multiple attributes may use 'and' operator or split to multiple '[]'
     // can use '*' as a wildcard
-
-    // 'and' operator
-    //    driver
-    //        .findElement(
-    //            By.xpath(
-    //                "//*[@type='submit' and @class='oxd-button oxd-button--medium oxd-button--main
-    // orangehrm-login-button']"))
-    //        .click();
-
-    // 'or' operator can be used as well
-
     // multiple '[]'
     driver
         .findElement(
