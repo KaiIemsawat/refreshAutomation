@@ -1,9 +1,12 @@
 package d29_checkbox_alerts;
 
+import java.time.Duration;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AlertHandleDemo {
   public static void main(String[] args) throws InterruptedException {
@@ -46,6 +49,18 @@ public class AlertHandleDemo {
     }
 
     Thread.sleep(1000);
+
+    /* Another way to handle alert - using explicit wait */
+    // Setup explicit wait
+    WebDriverWait exWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    // Click for alert
+    driver.findElement(By.xpath("//button[@onClick='myFunctionAlert()']")).click();
+    // Wait for alert
+    Alert waitAlert = exWait.until(ExpectedConditions.alertIsPresent());
+    Thread.sleep(1000);
+
+    System.out.println(waitAlert.getText());
+    Thread.sleep(3000);
 
     driver.quit();
   }
