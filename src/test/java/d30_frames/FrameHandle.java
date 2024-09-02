@@ -51,8 +51,6 @@ public class FrameHandle {
 
     driver.switchTo().defaultContent();
 
-
-
     Thread.sleep(5000);
     driver.quit();
   }
